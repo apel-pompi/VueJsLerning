@@ -1,41 +1,24 @@
 <template>
   <div id="home">
     <navbar></navbar>
-    <allfriend :friends="friends" @delete="deleteFriend"></allfriend>
-    <Online :friends="friends" />
+    <Hook/>
   </div>
 </template>
 <script>
 import navbar from './components/Navbar'
-import allfriend from './components/AllFriends'
-import Online from './components/OnlineFriends'
+import Hook from './components/Hook'
 export default {
   name:'app',
   data(){
     return {
-      friends:[
-                {name:'A',online:true},
-                {name:'B',online:true},
-                {name:'C',online:false},
-                {name:'D',online:true},
-                {name:'E',online:false},
-                {name:'F',online:false},
-            ]
+      
     }
   },
   components:{
     navbar,
-    allfriend,
-    Online
+    Hook
   },
-  methods:{
-    deleteFriend(payload){
-      this.friends = this.friends.filter(friend => {
-        return friend.name !== payload.name
-      })
-    }
-  }
-
+ 
 }
 </script>
 <style>
