@@ -1,8 +1,9 @@
 <template>
     <div class="hook">
         <h2>Post Page</h2>
+        <input type="text" v-model="searchItem" placeholder="search item">
         <hr>
-        <div v-for="post in posts" :key="post.id">
+        <div v-for="post in searchfilter" :key="post.id">
             <h2>{{ post.title }}</h2>
             <p>{{ post.body | snippet }}</p><hr>
         </div>
@@ -15,7 +16,15 @@ export default{
     name:'Hook',
     data(){
         return{
-            posts:[]
+            posts:[],
+            searchItem:''
+        }
+    },
+    computed:{
+        searchfilter(){
+            return this.posts.filter(post=>{
+                return post.title.match(this.searchItem)
+            })
         }
     },
     methods:{
