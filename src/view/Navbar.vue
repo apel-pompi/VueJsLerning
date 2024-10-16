@@ -14,6 +14,12 @@
                 </li>
             </ul>
         </div>
+        <button @click="Forward">Forward</button>
+        <button @click="Home">Home</button>
+        <button @click="About">About</button>
+        <button @click="Contact">Contact</button>
+        <button @click="Back">Back</button>
+                
     </div>
 </template>
 <script>
@@ -24,6 +30,23 @@ export default {
             userIds: [1,2,3,4,5,6]
         };
     },
+    methods:{
+        Forward(){
+            this.$router.go(1)
+        },
+        Home(){
+            this.$router.push({name:'home'})
+        },
+        About(){
+            this.$router.push({name:'about'})
+        },
+        Contact(){
+            this.$router.push({name:'contact'})
+        },
+        Back(){
+            this.$router.go(-1)
+        }
+    }
 }
 </script>
 
